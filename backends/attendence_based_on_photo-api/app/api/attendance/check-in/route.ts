@@ -1,6 +1,6 @@
 import { prisma } from "@/lib/prisma";
 import { getLoggedInUser } from "@/lib/auth";
-import { getTodaysStartOfDateInTenantTZ, getCurrentDateTimeInTenantTZ } from "@/app/commong/utils";
+import { getTodaysStartOfDateInTenantTZ, getCurrentDateTimeInTenantTZ } from "@/app/common/utils";
 
 export async function POST(req: Request) {
   const { userId } = await req.json();

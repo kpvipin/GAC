@@ -1,5 +1,5 @@
 // Returns today's date as 'YYYY-MM-DD' in tenant timezone
-export const getTodaysDateInTenantTZ = (tenantId) => {
+export const getTodaysDateInTenantTZ = (tenantId: string) => {
     const tenantTimezone = getTenantTimeZone(tenantId);
     const now = new Date();
     const tzString = now.toLocaleString("en-US", { timeZone: tenantTimezone });
@@ -9,7 +9,7 @@ export const getTodaysDateInTenantTZ = (tenantId) => {
 }
 
 // Returns the start of today (00:00:00) in tenant timezone
-export const getTodaysStartOfDateInTenantTZ = (tenantId) => {
+export const getTodaysStartOfDateInTenantTZ = (tenantId: string) => {
     const tenantTimezone = getTenantTimeZone(tenantId);
     const now = new Date();
     const tzString = now.toLocaleString("en-US", { timeZone: tenantTimezone });
@@ -23,7 +23,7 @@ export const getTodaysStartOfDateInTenantTZ = (tenantId) => {
     return startOfDay;
 }
 
-export const getCurrentDateTimeInTenantTZ = (tenantId) => {
+export const getCurrentDateTimeInTenantTZ = (tenantId: string) => {
     const tenantTimezone = getTenantTimeZone(tenantId);
     const now = new Date();
     const options = { timeZone: tenantTimezone };
@@ -33,6 +33,6 @@ export const getCurrentDateTimeInTenantTZ = (tenantId) => {
     return new Date(tzString);
 }
 
-const getTenantTimeZone = (tenantId) => {
+const getTenantTimeZone = (tenantId: string) => {
     return "Asia/Kolkata"; //TODO: Get timezone of Tenant
 }

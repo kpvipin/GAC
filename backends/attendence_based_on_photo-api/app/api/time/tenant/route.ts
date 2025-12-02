@@ -1,6 +1,6 @@
 import { NextResponse } from "next/server";
 import { getLoggedInUser } from "@/lib/auth";
-import { getCurrentDateTimeInTenantTZ } from "@/app/commong/utils";
+import { getCurrentDateTimeInTenantTZ } from "@/app/common/utils";
 
 export async function GET(req: Request) {
   try {

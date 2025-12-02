@@ -1,6 +1,6 @@
 import { prisma } from "@/lib/prisma";
 import { getLoggedInUser } from "@/lib/auth";
-import { getCurrentDateTimeInTenantTZ } from "@/app/commong/utils";
+import { getCurrentDateTimeInTenantTZ } from "@/app/common/utils";
 
 export async function POST(req: Request) {
   const { sessionId } = await req.json();

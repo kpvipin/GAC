@@ -1,6 +1,6 @@
 import { prisma } from "@/lib/prisma";
 import { getLoggedInUser } from "@/lib/auth";
-import { getTodaysStartOfDateInTenantTZ } from "@/app/commong/utils";
+import { getTodaysStartOfDateInTenantTZ } from "@/app/common/utils";
 
 export async function GET(req: Request) {
   console.log("Inside employees get")

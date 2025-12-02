@@ -1,0 +1,9 @@
+DB
+PostgreSQL in https://supabase.com (Google SSO)
+
+Backend (NextJS) - 
+Vercel - GitHub SSO
+
+
+Frontend (React)
+Vercel - GitHub SSO

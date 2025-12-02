@@ -7,6 +7,7 @@ const PUBLIC_ROUTES = ["/api/auth/login", "/api/auth/register"];
 const allowedOrigins = [
   "http://localhost:3000",
   "https://attendencebasedonphoto-api.vercel.app",
+  "https://gac-ebon.vercel.app"
 ];
 
 // Utility to add CORS headers

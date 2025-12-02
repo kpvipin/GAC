@@ -4,10 +4,22 @@ import { jwtVerify } from "jose";
 
 const PUBLIC_ROUTES = ["/api/auth/login", "/api/auth/register"];
 
+const allowedOrigins = [
+  "http://localhost:3000",
+  "https://attendencebasedonphoto-3u1565q6v-vipin-kps-projects.vercel.app",
+];
+
 // Utility to add CORS headers
-function withCors(res: NextResponse) {
-  res.headers.set("Access-Control-Allow-Origin", "http://localhost:3000");
-  res.headers.set("Access-Control-Allow-Methods", "GET,POST,PUT,DELETE,OPTIONS");
+function withCors(req: NextRequest, res: NextResponse) {
+  const origin = req.headers.get("origin");
+  if (origin && allowedOrigins.includes(origin)) {
+    res.headers.set("Access-Control-Allow-Origin", origin);
+    res.headers.set("Vary", "Origin"); // <-- Required when sending dynamic origins
+  }
+  res.headers.set(
+    "Access-Control-Allow-Methods",
+    "GET,POST,PUT,DELETE,OPTIONS"
+  );
   res.headers.set("Access-Control-Allow-Headers", "Content-Type, Authorization");
   res.headers.set("Access-Control-Allow-Credentials", "true");
   return res;

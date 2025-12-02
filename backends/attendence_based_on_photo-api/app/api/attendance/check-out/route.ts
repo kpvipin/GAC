@@ -8,7 +8,10 @@ export async function POST(req: Request) {
   const loggedInUser = getLoggedInUser(req);
   const session = await prisma.attendance_sessions.update({
     where: { id: sessionId },
-    data: { check_out_time: getCurrentDateTimeInTenantTZ(), updated_at: getCurrentDateTimeInTenantTZ() },
+    data: {
+      check_out_time: getCurrentDateTimeInTenantTZ(loggedInUser.tenantId),
+      updated_at: getCurrentDateTimeInTenantTZ(loggedInUser.tenantId)
+    },
   });
   return Response.json({ success: true, data: session });
 }

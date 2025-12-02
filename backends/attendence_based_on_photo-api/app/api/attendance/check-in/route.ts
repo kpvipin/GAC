@@ -11,8 +11,8 @@ export async function POST(req: Request) {
       users: {
         connect: { id: userId },
       },
-      work_date: getTodaysStartOfDateInTenantTZ(),
-      check_in_time: getCurrentDateTimeInTenantTZ(),
+      work_date: getTodaysStartOfDateInTenantTZ(loggedInUser.tenantId),
+      check_in_time: getCurrentDateTimeInTenantTZ(loggedInUser.tenantId),
       tenants: {
         connect: { id: loggedInUser.tenantId },
       },

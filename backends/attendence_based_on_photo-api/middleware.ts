@@ -31,12 +31,12 @@ export function middleware(req: NextRequest) {
   const { pathname } = req.nextUrl;
   console.log(pathname);
   if (PUBLIC_ROUTES.some((r) => pathname.startsWith(r))) {
-    return withCors(NextResponse.next());
+    return withCors(req, NextResponse.next());
   }
   console.log(req.method);
   if (req.method === "OPTIONS") {
     const res = new NextResponse(null, { status: 204 });
-    return withCors(res);
+    return withCors(req, res);
   }
 
   console.log("Getting the token from cookie");
@@ -49,9 +49,9 @@ export function middleware(req: NextRequest) {
   try {
     const secret = new TextEncoder().encode(process.env.JWT_SECRET);
     jwtVerify(token, secret);
-    return withCors(NextResponse.next());
+    return withCors(req, NextResponse.next());
   } catch (err) {
-    return new NextResponse("Unauthorized", { status: 401 });
+    return withCors(req, new NextResponse("Unauthorized", { status: 401 }));
   }
 }
 export const config = {

@@ -44,7 +44,7 @@ export function middleware(req: NextRequest) {
   console.log(req.cookies);
   console.log(token);
   if (!token) {
-    return new NextResponse("Unauthorized", { status: 401 });
+    return withCors(req, new NextResponse("Unauthorized", { status: 401 }));
   }
   try {
     const secret = new TextEncoder().encode(process.env.JWT_SECRET);
